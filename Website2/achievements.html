@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thành Tựu - HN Media </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+    <style>
+        /* ===============================
+   GLOBAL STYLE
+================================*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7bb379;
+            --secondary: #058a19;
+            --accent: #71c63f;
+            --dark: #058a19;
+            --light: #f8fafc;
+            --gray: #058a19;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark);
+            background: var(--light);
+            line-height: 1.6;
+        }
+
+        /* ===============================
+   HEADER & NAVIGATION
+================================*/
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-100px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: white;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                width: 200px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+
+        /* ===============================
+   HERO SECTION
+================================*/
+        .achievements-hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievements-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15), transparent 70%);
+            animation: float 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .achievements-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .achievements-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===============================
+   SECTION TITLES
+================================*/
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.4rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        /* ===============================
+   TIMELINE SECTION
+================================*/
+        .timeline {
+            background: white;
+            padding: 6rem 2rem;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: -60px;
+            top: 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content {
+            background: var(--light);
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===============================
+   AWARDS SECTION
+================================*/
+        .awards {
+            background: var(--light);
+            padding: 6rem 2rem;
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .award-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .award-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .award-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        /* ===============================
+   PROJECTS SECTION
+================================*/
+        .projects {
+            background: white;
+            padding: 6rem 2rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 4px solid var(--primary);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+            background: var(--light);
+        }
+
+        .project-info h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            color: var(--gray);
+        }
+
+        /* ===============================
+   SCROLL TOP BUTTON
+================================*/
+        #scrollTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #e63946;
+            color: #fff;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        #scrollTop.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #scrollTop:hover {
+            background: #d62828;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+        }
+        
+
+        /* Responsive Navigation */
+        @media (max-width: 992px) {
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                flex-direction: column;
+                background: var(--secondary);
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                padding: 5rem 2rem;
+                gap: 2rem;
+                transition: all 0.5s;
+                z-index: 1001;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-menu {
+                display: block;
+                z-index: 1002;
+            }
+        }
+        #pageLoader {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+#pageLoader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#pageLoader p {
+  margin-top: 1rem;
+  color: #058a19;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+/* Custom loader from anh Bỡm */
+.loader {
+  width: 50px;
+  aspect-ratio: 1.154;
+  position: relative;
+  background: conic-gradient(from 120deg at 50% 64%, #0000, #058a19 1deg 120deg, #0000 121deg);
+  animation: l27-0 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
+}
+.loader:before,
+.loader:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  transform-origin: 50% 66%;
+  animation: l27-1 1.5s infinite;
+}
+.loader:after {
+  --s: -1;
+}
+@keyframes l27-0 {
+  0%, 30% { transform: rotate(0) }
+  70% { transform: rotate(120deg) }
+  70.01%, 100% { transform: rotate(360deg) }
+}
+@keyframes l27-1 {
+  0% { transform: rotate(calc(var(--s,1)*120deg)) translate(0) }
+  30%, 70% { transform: rotate(calc(var(--s,1)*120deg)) translate(calc(var(--s,1)*-5px),10px) }
+  100% { transform: rotate(calc(var(--s,1)*120deg)) translate(0) }
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 80px;          /* Chiều cao logo desktop */
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.05); /* Hiệu ứng nhẹ khi hover */
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+  .logo img {
+    height: 80px; /* Nhỏ lại để vừa thanh menu */
+  }
+}
+.logo span {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+  margin-left: 0.5rem;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <div id="pageLoader">
+        <div class="loader"></div>
+        <p>Đang tải trang...</p>
+      </div>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="./index.html">
+                  <img src="./img/logo.png" alt="HN Media Logo">
+                  <span>HN Media</span>
+                </a>
+              </div>
+              
+              
+            <ul class="nav-links">
+                <li><a href="./index.html">Trang Chủ</a></li>
+                <li><a href="./about.html">Giới thiệu</a></li>
+                <li><a href="./courses.html">Khóa Học</a></li>
+                <li><a href="./contract.html">Liên Hệ</a></li>
+                <li><a href="./achievements.html">Thành tựu</a></li>
+                <li><a href="./recruitment.html">Tuyển dụng</a></li>
+
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="achievements-hero">
+        <div class="hero-content">
+            <h1>Thành Tựu của HN Media</h1>
+            <p>Hành trình phát triển và những dấu ấn đáng nhớ trong lĩnh vực Marketing & Livestream</p>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline">
+        <div class="section-title">
+            <h2>Hành Trình Phát Triển</h2>
+            <p>Những cột mốc quan trọng của chúng tôi</p>
+        </div>
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <div class="timeline-date">2020</div>
+                <div class="timeline-content">
+                    <h3>Thành lập HN Media</h3>
+                    <p>Bắt đầu hành trình với đội ngũ chỉ 5 thành viên đam mê sáng tạo và công nghệ.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2021</div>
+                <div class="timeline-content">
+                    <h3>Mở rộng dịch vụ Livestream</h3>
+                    <p>Ra mắt nền tảng livestream chuyên nghiệp, hỗ trợ hơn 50 doanh nghiệp bán hàng trực tuyến.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2022</div>
+                <div class="timeline-content">
+                    <h3>Đạt chứng nhận Top 10  Việt Nam</h3>
+                    <p>Ghi dấu ấn tại “Digital Marketing Awards 2022”.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2023</div>
+                <div class="timeline-content">
+                    <h3>Vươn tầm quốc tế</h3>
+                    <p>Tham gia hợp tác cùng đối tác Nhật Bản và Hàn Quốc trong các chiến dịch truyền thông toàn cầu.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section class="awards">
+        <div class="section-title">
+            <h2>Giải Thưởng & Chứng Nhận</h2>
+            <p>Những thành tựu đáng tự hào của HN Media</p>
+        </div>
+        <div class="awards-grid">
+            <div class="award-card">
+                <div class="award-icon"><i class="fas fa-trophy"></i></div>
+                <h3>Top 10 Digital </h3>
+                <p>Digital Marketing Awards 2022</p>
+            </div>
+            <div class="award-card">
+                <div class="award-icon"><i class="fas fa-award"></i></div>
+                <h3>Best Livestream Solution</h3>
+                <p>Vietnam Tech Awards 2023</p>
+            </div>
+            <div class="award-card">
+                <div class="award-icon"><i class="fas fa-medal"></i></div>
+                <h3>Outstanding Growth</h3>
+                <p>Startup Việt Innovation 2024</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Showcase -->
+    <section class="projects">
+        <div class="section-title">
+            <h2>Dự Án Tiêu Biểu</h2>
+            <p>Những chiến dịch marketing đã tạo nên dấu ấn lớn</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="images/project1.jpg" alt="Chiến dịch XYZ">
+                <div class="project-info">
+                    <h3>Chiến Dịch XYZ</h3>
+                    <p>Tăng 200% doanh số cho thương hiệu thời trang sau 3 tháng triển khai.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="images/project2.jpg" alt="Chiến dịch ABC">
+                <div class="project-info">
+                    <h3>Chiến Dịch ABC</h3>
+                    <p>Tăng nhận diện thương hiệu hơn 3 triệu lượt tiếp cận tự nhiên.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="images/project3.jpg" alt="Chiến dịch QTV">
+                <div class="project-info">
+                    <h3>Chiến Dịch QTV</h3>
+                    <p>Giúp doanh nghiệp SMEs đạt mục tiêu chuyển đổi số sớm hơn 40% kế hoạch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- JavaScript -->
+    <script>
+        // Scroll to top
+        window.addEventListener('scroll', function () {
+            const scrollTop = document.getElementById('scrollTop');
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Animate on scroll
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.timeline-item, .award-card, .project-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+        window.addEventListener("load", () => {
+    const loader = document.getElementById("pageLoader");
+    setTimeout(() => loader.classList.add("hidden"), 500);
+  });
+
+  // Khi click link -> hiện loader trước khi rời trang
+  document.querySelectorAll('a[href]').forEach(link => {
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+      // Bỏ qua anchor hoặc javascript
+      if (!href || href.startsWith('#') || href.startsWith('javascript:')) return;
+      e.preventDefault();
+      const loader = document.getElementById("pageLoader");
+      loader.classList.remove("hidden");
+      setTimeout(() => { window.location.href = href; }, 300);
+    });
+  });
+    </script>
+</body>
+
+</html>

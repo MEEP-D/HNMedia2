@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khóa học - HN Media Academy</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        /* ===============================
+   GLOBAL STYLE
+================================*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7bb379;
+            --secondary: #058a19;
+            --accent: #71c63f;
+            --dark: #058a19;
+            --light: #f8fafc;
+            --gray: #058a19;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark);
+            background: var(--light);
+            line-height: 1.6;
+        }
+
+        /* ===============================
+   HEADER & NAVIGATION
+================================*/
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Responsive Navigation */
+        /* Responsive Navigation */
+        @media (max-width: 992px) {
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                flex-direction: column;
+                background: var(--secondary);
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                padding: 5rem 2rem;
+                gap: 2rem;
+                transition: all 0.5s;
+                z-index: 1001;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-menu {
+                display: block;
+                z-index: 1002;
+            }
+        }
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                flex-direction: column;
+                background: var(--secondary);
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                padding: 5rem 2rem;
+                gap: 2rem;
+                transition: all 0.5s;
+                z-index: 1001;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-menu {
+                display: block;
+                z-index: 1002;
+            }
+        }
+
+        /* ===============================
+   HERO SECTION
+================================*/
+        .about-hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15), transparent 70%);
+            animation: float 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===============================
+   SECTION TITLE
+================================*/
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.4rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        /* ===============================
+   COURSE LIST / GALLERY
+================================*/
+        .company-gallery {
+            background: var(--light);
+            padding: 6rem 2rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .gallery-caption h3 {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-caption p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #046915;
+            transform: translateY(-3px);
+        }
+
+        /* ===============================
+   COURSE DETAIL SECTION
+================================*/
+        .course-detail {
+            background: white;
+            padding: 6rem 2rem;
+        }
+
+        .course-detail .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .course-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .course-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .course-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-text {
+            flex: 1.2;
+            min-width: 300px;
+        }
+
+        .course-text h2 {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .course-text ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .course-text li {
+            margin-bottom: 0.6rem;
+        }
+
+        .course-text strong {
+            color: var(--accent);
+        }
+
+        /* ===============================
+   SCROLL TO TOP BUTTON
+================================*/
+        #scrollTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #e63946;
+            color: #fff;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        #scrollTop.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #scrollTop:hover {
+            background: #d62828;
+        }
+
+        /* ===============================
+   LOADER OVERLAY
+================================*/
+        #pageLoader {
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.4s ease;
+        }
+
+        #pageLoader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #pageLoader p {
+            margin-top: 1rem;
+            color: #058a19;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Custom loader by Bỡm bờm */
+        .loader {
+            width: 50px;
+            aspect-ratio: 1.154;
+            position: relative;
+            background: conic-gradient(from 120deg at 50% 64%, #0000, #058a19 1deg 120deg, #0000 121deg);
+            animation: l27-0 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
+        }
+
+        .loader:before,
+        .loader:after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            transform-origin: 50% 66%;
+            animation: l27-1 1.5s infinite;
+        }
+
+        .loader:after {
+            --s: -1;
+        }
+
+        @keyframes l27-0 {
+
+            0%,
+            30% {
+                transform: rotate(0)
+            }
+
+            70% {
+                transform: rotate(120deg)
+            }
+
+            70.01%,
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        @keyframes l27-1 {
+            0% {
+                transform: rotate(calc(var(--s, 1)*120deg)) translate(0)
+            }
+
+            30%,
+            70% {
+                transform: rotate(calc(var(--s, 1)*120deg)) translate(calc(var(--s, 1)*-5px), 10px)
+            }
+
+            100% {
+                transform: rotate(calc(var(--s, 1)*120deg)) translate(0)
+            }
+        }
+
+        /* ===============================
+   RESPONSIVE
+================================*/
+        @media (max-width: 992px) {
+            .course-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* ===================================
+   BUTTON GROUP
+=================================== */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .btn-register {
+            background: #ff9800;
+        }
+
+        .btn-register:hover {
+            background: #e68900;
+        }
+
+        /* ===================================
+   MODAL POPUP FORM
+=================================== */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            animation: fadeInUp 0.4s ease;
+        }
+
+        .close {
+            position: absolute;
+            top: 12px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: none;
+            min-height: 80px;
+        }
+        .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 80px;          /* Chiều cao logo desktop */
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.05); /* Hiệu ứng nhẹ khi hover */
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+  .logo img {
+    height: 80px; /* Nhỏ lại để vừa thanh menu */
+  }
+}
+.logo span {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+  margin-left: 0.5rem;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <!-- LOADER -->
+    <div id="pageLoader">
+        <div class="loader"></div>
+        <p>Đang tải trang...</p>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="./index.html">
+                  <img src="./img/logo.png" alt="HN Media Logo">
+                  <span>HN Media</span>
+                </a>
+              </div>
+              
+                          <ul class="nav-links">
+                <li><a href="./index.html">Trang Chủ</a></li>
+                <li><a href="./about.html">Giới Thiệu</a></li>
+                <li><a href="./courses.html" class="active">Khóa Học</a></li>
+                <li><a href="./contract.html">Liên Hệ</a></li>
+                <li><a href="./achievements.html">Thành tựu</a></li>
+                <li><a href="./recruitment.html">Tuyển dụng</a></li>
+            </ul>
+            <div class="mobile-menu"><i class="fas fa-bars"></i></div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="about-hero">
+        <div class="hero-content">
+            <h1>Khóa Học HN Media</h1>
+            <p>Phát triển kỹ năng Marketing & Livestream chuyên nghiệp cho mọi đối tượng</p>
+        </div>
+    </section>
+
+    <!-- COURSE LIST -->
+    <section class="company-gallery">
+        <div class="section-title">
+            <h2>Danh Sách Khóa Học</h2>
+            <p>Lựa chọn lộ trình phù hợp với nhu cầu cá nhân hoặc doanh nghiệp của bạn</p>
+        </div>
+
+        <div class="gallery-grid">
+            <!-- COURSE 1: DOANH NGHIỆP -->
+            <div class="gallery-item">
+                <img src="./img/tiktok2.jpg" alt="Khóa học cho Doanh nghiệp">
+                <div class="gallery-caption">
+                    <h3>Khóa Học Cho Doanh Nghiệp</h3>
+                    <p>Tối ưu đội ngũ Marketing và tăng hiệu suất kinh doanh qua đào tạo chuyên sâu.</p>
+                    <div class="btn-group">
+                        <button class="btn" onclick="openForm('advice')"><i class="fas fa-comments"></i> Tư vấn miễn
+                            phí</button>
+                        <button class="btn btn-register" onclick="openForm('register')"><i class="fas fa-edit"></i> Đăng
+                            ký ngay</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COURSE 2: CÁ NHÂN -->
+            <div class="gallery-item">
+                <img src="./img/tiktok2.jpg" alt="Khóa học cho Cá nhân">
+                <div class="gallery-caption">
+                    <h3>Khóa Học Cho Cá Nhân</h3>
+                    <p>Phát triển kỹ năng Livestream, Content và Quảng cáo mạng xã hội cho người mới.</p>
+                    <div class="btn-group">
+                        <button class="btn" onclick="openForm('advice')"><i class="fas fa-comments"></i> Tư vấn miễn
+                            phí</button>
+                        <button class="btn btn-register" onclick="openForm('register')"><i class="fas fa-edit"></i> Đăng
+                            ký ngay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCROLL TOP -->
+    <button id="scrollTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- MODAL FORM -->
+    <div id="popupForm" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeForm()">&times;</span>
+            <h2 id="formTitle">Tư vấn miễn phí</h2>
+            <form id="contactForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label>Họ và Tên *</label>
+                    <input type="text" name="name" required placeholder="Nhập họ tên của bạn">
+                </div>
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" name="email" required placeholder="email@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Số Điện Thoại *</label>
+                    <input type="tel" name="phone" required placeholder="0912 345 678">
+                </div>
+                <div id="registerFields" style="display: none;">
+                    <div class="form-group">
+                        <label>Chọn Khóa Học</label>
+                        <select name="course">
+                            <option value="">-- Chọn khóa học --</option>
+                            <option value="business">Cho Doanh Nghiệp</option>
+                            <option value="personal">Cho Cá Nhân</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Ghi Chú</label>
+                        <textarea name="note" placeholder="Ghi chú thêm (không bắt buộc)"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn" style="width:100%;"><i class="fas fa-paper-plane"></i> Gửi thông
+                    tin</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ===== MODAL FORM =====
+        function openForm(type) {
+            const modal = document.getElementById('popupForm');
+            const title = document.getElementById('formTitle');
+            const registerFields = document.getElementById('registerFields');
+
+            if (type === 'register') {
+                title.textContent = 'Đăng ký khóa học';
+                registerFields.style.display = 'block';
+            } else {
+                title.textContent = 'Tư vấn miễn phí';
+                registerFields.style.display = 'none';
+            }
+
+            modal.classList.add('active');
+        }
+
+        function closeForm() {
+            document.getElementById('popupForm').classList.remove('active');
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            alert('Thông tin của bạn đã được gửi thành công! Chúng tôi sẽ liên hệ sớm nhất.');
+            closeForm();
+        }
+
+        // Loader hiển thị khi load trang
+        window.addEventListener("load", () => {
+            const loader = document.getElementById("pageLoader");
+            setTimeout(() => loader.classList.add("hidden"), 500);
+        });
+
+        // Khi click link -> hiện loader trước khi rời trang
+        document.querySelectorAll('a[href]').forEach(link => {
+            link.addEventListener('click', e => {
+                const href = link.getAttribute('href');
+                if (!href || href.startsWith('#') || href.startsWith('javascript:')) return;
+                e.preventDefault();
+                const loader = document.getElementById("pageLoader");
+                loader.classList.remove("hidden");
+                setTimeout(() => { window.location.href = href; }, 300);
+            });
+        });
+
+        // Scroll to top
+        window.addEventListener('scroll', function () {
+            const scrollTop = document.getElementById('scrollTop');
+            if (window.pageYOffset > 300) scrollTop.classList.add('visible');
+            else scrollTop.classList.remove('visible');
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        if (mobileMenu && navLinks) {
+            mobileMenu.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+        }
+
+    </script> <!-- dùng script chung -->
+</body>
+
+</html>
