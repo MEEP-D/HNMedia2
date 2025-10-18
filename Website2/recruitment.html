@@ -1013,9 +1013,10 @@
             };
 
             try {
-                const res = await fetch("https://script.google.com/macros/s/AKfycbwJZxDcF733C_SYdQwbpyri2geXuTnoNOzgyj01LmFBm4XfDEiYWfy-Evi-t5WoH4PE/exec", {
+                const res = await fetch("https://script.google.com/macros/s/AKfycbztk5FEYsbh8EGzJsMXJ_GWrmcynB3p1KHw0tFwJZsVI9uPUqPSMCyjhQQFnTIrhS_eBA/exec", {
                     method: "POST",
-                    body: JSON.stringify(data)
+    headers: { "Content-Type": "application/json" }, // 🔥 Bắt buộc thêm dòng này
+    body: JSON.stringify(data)
                 });
                 const result = await res.json();
 
