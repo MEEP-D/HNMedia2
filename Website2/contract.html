@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liên Hệ - HN Media </title>
+    <link rel="icon" type="image/png" href="./img/logo.png" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
         /* ===============================
@@ -20,9 +21,9 @@
             --primary: #7bb379;
             --secondary: #058a19;
             --accent: #71c63f;
-            --dark: #058a19;
+            --dark: #0d7b23;
             --light: #f8fafc;
-            --gray: #058a19;
+            --gray: #0e0f0e;
         }
 
         body {
@@ -416,7 +417,83 @@
   color: white;
   margin-left: 0.5rem;
 }
+   /* Footer */
+   footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
 
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
 
     </style>
 </head>
@@ -469,21 +546,21 @@
                     <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                     <div class="contact-details">
                         <h3>Địa Chỉ</h3>
-                        <p>Tầng 5, Tòa nhà ABC<br>123 Đường Láng, Đống Đa<br>Hà Nội, Việt Nam</p>
+                        <p>Chung cư THE WESTERIA<br>Kim Chung Hoài Đức<br>Hà Nội, Việt Nam</p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon"><i class="fas fa-phone"></i></div>
                     <div class="contact-details">
                         <h3>Điện Thoại</h3>
-                        <p>Hotline: 1900 xxxx<br>Mobile: 0912 345 678<br>8:00 - 22:00 (T2 - CN)</p>
+                        <p>Hotline: 0328 762 271<br>Mobile: 0766 041 234<br>8:00 - 22:00 (T2 - CN)</p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                     <div class="contact-details">
                         <h3>Email</h3>
-                        <p>info@HN Media.vn<br>support@HN Media.vn<br>career@HN Media.vn</p>
+                        <p>hnmedia665668@gmail.com<br>support@HN Media.vn<br>career@HN Media.vn</p>
                     </div>
                 </div>
             </div>
@@ -526,7 +603,59 @@
             </div>
         </div>
     </section>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>HN Media </h3>
+                <p>Chúng tôi là đối tác tin cậy của hơn 500+ doanh nghiệp trong việc xây dựng và phát triển thương hiệu
+                    trên môi trường số.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/hoai.nam.689904"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
 
+            <div class="footer-section">
+                <h3>Dịch Vụ</h3>
+                <ul class="footer-links">
+                    <li><a href="#services">Digital Marketing</a></li>
+                    <li><a href="#services">Đào Tạo Livestream</a></li>
+                    <li><a href="#services">Affiliate Marketing</a></li>
+                    <li><a href="#services">Thiết Kế Website</a></li>
+                    <li><a href="#services">Branding & Identity</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Về Chúng Tôi</h3>
+                <ul class="footer-links">
+                    <li><a href="#about">Giới Thiệu</a></li>
+                    <li><a href="#process">Quy Trình Làm Việc</a></li>
+                    <li><a href="#testimonials">Khách Hàng</a></li>
+                    <li><a href="#pricing">Bảng Giá</a></li>
+                    <li><a href="#contact">Liên Hệ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Tài Nguyên</h3>
+                <ul class="footer-links">
+                    <li><a href="#blog">Blog Marketing</a></li>
+                    <li><a href="#case-study">Case Study</a></li>
+                    <li><a href="#ebook">Ebook Miễn Phí</a></li>
+                    <li><a href="#webinar">Webinar</a></li>
+                    <li><a href="#support">Hỗ Trợ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2018 HN Media . All rights reserved. | Designed with Meep<i class="fas fa-heart"
+                    style="color: #ec4899;"></i> for success</p>
+        </div>
+    </footer>
     <button id="scrollTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
 
     <script>
