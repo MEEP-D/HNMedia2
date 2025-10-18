@@ -1013,10 +1013,12 @@
             };
 
             try {
-                const res = await fetch("https://script.google.com/macros/s/AKfycbztk5FEYsbh8EGzJsMXJ_GWrmcynB3p1KHw0tFwJZsVI9uPUqPSMCyjhQQFnTIrhS_eBA/exec", {
-                    method: "POST",
-    body: JSON.stringify(data)
-                });
+                const res = await fetch("https://script.google.com/macros/s/AKfycbyWQ3bMTvc7mQFZhV52I0Mooo90lLjST1s-6AexNSSSuD6tWNnPB4wNbWh1zHU6SnHgGg/exec", {
+  method: "POST",
+  headers: { "Content-Type": "text/plain" },
+  body: JSON.stringify(data),
+});
+
                 const result = await res.json();
 
                 if (result.result === "success") {
