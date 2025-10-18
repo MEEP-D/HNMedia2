@@ -390,7 +390,7 @@
             color: white;
             cursor: pointer;
         }
-        
+
 
         /* Responsive Navigation */
         /* Responsive Navigation */
@@ -429,98 +429,129 @@
                 z-index: 1002;
             }
         }
+
         #pageLoader {
-  position: fixed;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.95);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  opacity: 1;
-  transition: opacity 0.4s ease;
-}
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.4s ease;
+        }
 
-#pageLoader.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
+        #pageLoader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
 
-#pageLoader p {
-  margin-top: 1rem;
-  color: #058a19;
-  font-weight: 500;
-  font-size: 1.1rem;
-}
+        #pageLoader p {
+            margin-top: 1rem;
+            color: #058a19;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
 
-/* Custom loader from anh Bỡm */
-.loader {
-  width: 50px;
-  aspect-ratio: 1.154;
-  position: relative;
-  background: conic-gradient(from 120deg at 50% 64%, #0000, #058a19 1deg 120deg, #0000 121deg);
-  animation: l27-0 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
-}
-.loader:before,
-.loader:after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: inherit;
-  transform-origin: 50% 66%;
-  animation: l27-1 1.5s infinite;
-}
-.loader:after {
-  --s: -1;
-}
-@keyframes l27-0 {
-  0%, 30% { transform: rotate(0) }
-  70% { transform: rotate(120deg) }
-  70.01%, 100% { transform: rotate(360deg) }
-}
-@keyframes l27-1 {
-  0% { transform: rotate(calc(var(--s,1)*120deg)) translate(0) }
-  30%, 70% { transform: rotate(calc(var(--s,1)*120deg)) translate(calc(var(--s,1)*-5px),10px) }
-  100% { transform: rotate(calc(var(--s,1)*120deg)) translate(0) }
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
+        /* Custom loader from anh Bỡm */
+        .loader {
+            width: 50px;
+            aspect-ratio: 1.154;
+            position: relative;
+            background: conic-gradient(from 120deg at 50% 64%, #0000, #058a19 1deg 120deg, #0000 121deg);
+            animation: l27-0 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
+        }
 
-.logo a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
+        .loader:before,
+        .loader:after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            transform-origin: 50% 66%;
+            animation: l27-1 1.5s infinite;
+        }
 
-.logo img {
-  height: 100px;          /* Chiều cao logo desktop */
-  width: 100px;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
+        .loader:after {
+            --s: -1;
+        }
 
-.logo img:hover {
-  transform: scale(1.05); /* Hiệu ứng nhẹ khi hover */
-}
+        @keyframes l27-0 {
 
-/* Responsive cho mobile */
-@media (max-width: 768px) {
-  .logo img {
-    height: 80px; /* Nhỏ lại để vừa thanh menu */
-  }
-}
-.logo span {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: white;
-  margin-left: 0.5rem;
-}
-   /* Footer */
-   footer {
+            0%,
+            30% {
+                transform: rotate(0)
+            }
+
+            70% {
+                transform: rotate(120deg)
+            }
+
+            70.01%,
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        @keyframes l27-1 {
+            0% {
+                transform: rotate(calc(var(--s, 1)*120deg)) translate(0)
+            }
+
+            30%,
+            70% {
+                transform: rotate(calc(var(--s, 1)*120deg)) translate(calc(var(--s, 1)*-5px), 10px)
+            }
+
+            100% {
+                transform: rotate(calc(var(--s, 1)*120deg)) translate(0)
+            }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 100px;
+            /* Chiều cao logo desktop */
+            width: 100px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+            /* Hiệu ứng nhẹ khi hover */
+        }
+
+        /* Responsive cho mobile */
+        @media (max-width: 768px) {
+            .logo img {
+                height: 80px;
+                /* Nhỏ lại để vừa thanh menu */
+            }
+        }
+
+        .logo span {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: white;
+            margin-left: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
             background: var(--dark);
             color: white;
             padding: 4rem 2rem 2rem;
@@ -603,17 +634,17 @@
     <div id="pageLoader">
         <div class="loader"></div>
         <p>Đang tải trang...</p>
-      </div>
+    </div>
     <header>
         <nav>
             <div class="logo">
                 <a href="./index.html">
-                  <img src="./img/logo.png" alt="HN Media Logo">
-                  <span>HN Media</span>
+                    <img src="./img/logo.png" alt="HN Media Logo">
+                    <span>HN Media</span>
                 </a>
-              </div>
-              
-              
+            </div>
+
+
             <ul class="nav-links">
                 <li><a href="./index.html">Trang Chủ</a></li>
                 <li><a href="./about.html">Giới thiệu</a></li>
@@ -808,8 +839,32 @@
                     style="color: #ec4899;"></i> for success</p>
         </div>
     </footer>
-<script>
-    const mobileMenu = document.querySelector('.mobile-menu');
+    <script>
+        document.querySelector('.contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const name = form.querySelector('input[type="text"]').value;
+            const email = form.querySelector('input[type="email"]').value;
+            const phone = form.querySelector('input[type="tel"]').value;
+            const position = form.querySelector('select').value;
+            const cover = form.querySelector('textarea').value;
+            const fileInput = form.querySelector('input[type="file"]');
+
+            // Nếu bạn không muốn upload file, chỉ lưu tên file
+            const cv = fileInput.files.length > 0 ? fileInput.files[0].name : '';
+
+            const data = { name, email, phone, position, cover, cv };
+
+            await fetch('https://script.google.com/macros/s/AKfycbwJZxDcF733C_SYdQwbpyri2geXuTnoNOzgyj01LmFBm4XfDEiYWfy-Evi-t5WoH4PE/exec', {
+                method: 'POST',
+                body: JSON.stringify(data)
+            });
+
+            alert("Gửi hồ sơ thành công! Chúng tôi sẽ liên hệ sớm nhất.");
+            form.reset();
+        });
+        const mobileMenu = document.querySelector('.mobile-menu');
         const navLinks = document.querySelector('.nav-links');
 
         mobileMenu.addEventListener('click', () => {
@@ -817,23 +872,23 @@
             mobileMenu.classList.toggle('active');
         });
         window.addEventListener("load", () => {
-    const loader = document.getElementById("pageLoader");
-    setTimeout(() => loader.classList.add("hidden"), 500);
-  });
+            const loader = document.getElementById("pageLoader");
+            setTimeout(() => loader.classList.add("hidden"), 500);
+        });
 
-  // Khi click link -> hiện loader trước khi rời trang
-  document.querySelectorAll('a[href]').forEach(link => {
-    link.addEventListener('click', e => {
-      const href = link.getAttribute('href');
-      // Bỏ qua anchor hoặc javascript
-      if (!href || href.startsWith('#') || href.startsWith('javascript:')) return;
-      e.preventDefault();
-      const loader = document.getElementById("pageLoader");
-      loader.classList.remove("hidden");
-      setTimeout(() => { window.location.href = href; }, 300);
-    });
-  });
-</script>
+        // Khi click link -> hiện loader trước khi rời trang
+        document.querySelectorAll('a[href]').forEach(link => {
+            link.addEventListener('click', e => {
+                const href = link.getAttribute('href');
+                // Bỏ qua anchor hoặc javascript
+                if (!href || href.startsWith('#') || href.startsWith('javascript:')) return;
+                e.preventDefault();
+                const loader = document.getElementById("pageLoader");
+                loader.classList.remove("hidden");
+                setTimeout(() => { window.location.href = href; }, 300);
+            });
+        });
+    </script>
 </body>
 
 </html>
