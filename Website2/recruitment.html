@@ -627,6 +627,127 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.7);
         }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        /* Hiển thị popup */
+        .popup-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Nội dung popup */
+        .popup-content {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            max-width: 320px;
+            width: 90%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            animation: popIn 0.4s ease;
+        }
+
+        .popup-content h3 {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .popup-content p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Checkmark circle */
+        .checkmark-circle {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            border-radius: 50%;
+            border: 4px solid #4CAF50;
+            box-sizing: border-box;
+        }
+
+        /* Dấu tích chuẩn giữa vòng tròn */
+        .checkmark {
+            width: 28px;
+            height: 56px;
+            border-right: 5px solid #4CAF50;
+            border-bottom: 5px solid #4CAF50;
+            transform: rotate(45deg);
+            animation: drawCheck 0.6s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        /* Animation */
+        @keyframes drawCheck {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) rotate(45deg);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(45deg);
+            }
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .popup-content {
+                max-width: 90%;
+                padding: 25px 15px;
+            }
+
+            .popup-content h3 {
+                font-size: 1rem;
+            }
+
+            .popup-content p {
+                font-size: 0.9rem;
+            }
+
+            .checkmark-circle {
+                width: 70px;
+                height: 70px;
+            }
+
+            .checkmark {
+                width: 24px;
+                height: 48px;
+            }
+        }
     </style>
 </head>
 
@@ -785,6 +906,16 @@
             </div>
             <button type="submit" class="btn btn-primary">Gửi Hồ Sơ</button>
         </form>
+        <div id="successPopup" class="popup-overlay">
+            <div class="popup-content">
+                <div class="checkmark-circle">
+                    <div class="background"></div>
+                    <div class="checkmark draw"></div>
+                </div>
+                <h3>Gửi hồ sơ thành công!</h3>
+                <p>Cảm ơn bạn đã ứng tuyển. Chúng tôi sẽ sớm liên hệ.</p>
+            </div>
+        </div>
     </section>
     <footer>
         <div class="footer-content">
@@ -840,30 +971,77 @@
         </div>
     </footer>
     <script>
-        document.querySelector('.contact-form').addEventListener('submit', async (e) => {
+        document.querySelector(".contact-form").addEventListener("submit", async (e) => {
             e.preventDefault();
 
-            const form = e.target;
-            const name = form.querySelector('input[type="text"]').value;
-            const email = form.querySelector('input[type="email"]').value;
-            const phone = form.querySelector('input[type="tel"]').value;
-            const position = form.querySelector('select').value;
-            const cover = form.querySelector('textarea').value;
-            const fileInput = form.querySelector('input[type="file"]');
+            const button = e.target.querySelector("button");
+            button.disabled = true;
+            button.textContent = "Đang gửi...";
 
-            // Nếu bạn không muốn upload file, chỉ lưu tên file
-            const cv = fileInput.files.length > 0 ? fileInput.files[0].name : '';
+            const name = e.target.querySelector("input[type=text]").value;
+            const email = e.target.querySelector("input[type=email]").value;
+            const phone = e.target.querySelector("input[type=tel]").value;
+            const position = e.target.querySelector("select").value;
+            const message = e.target.querySelector("textarea").value;
+            const fileInput = e.target.querySelector("input[type=file]");
+            let fileData = null;
 
-            const data = { name, email, phone, position, cover, cv };
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                fileData = await new Promise((resolve) => {
+                    reader.onload = () => {
+                        const base64 = reader.result.split(",")[1];
+                        resolve({
+                            name: file.name,
+                            type: file.type,
+                            content: base64
+                        });
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
 
-            await fetch('https://script.google.com/macros/s/AKfycbwJZxDcF733C_SYdQwbpyri2geXuTnoNOzgyj01LmFBm4XfDEiYWfy-Evi-t5WoH4PE/exec', {
-                method: 'POST',
-                body: JSON.stringify(data)
-            });
+            const data = {
+                token: "HNMEDIA_FORM_2025",
+                name,
+                email,
+                phone,
+                position,
+                message,
+                fileData
+            };
 
-            alert("Gửi hồ sơ thành công! Chúng tôi sẽ liên hệ sớm nhất.");
-            form.reset();
+            try {
+                const res = await fetch("https://script.google.com/macros/s/AKfycbwJZxDcF733C_SYdQwbpyri2geXuTnoNOzgyj01LmFBm4XfDEiYWfy-Evi-t5WoH4PE/exec", {
+                    method: "POST",
+                    body: JSON.stringify(data)
+                });
+                const result = await res.json();
+
+                if (result.result === "success") {
+                    showSuccessPopup(); // gọi popup thông báo
+                    e.target.reset();
+                } else {
+                    alert("Gửi thất bại: " + result.message);
+                }
+            } catch (err) {
+                alert("Lỗi kết nối: " + err);
+            } finally {
+                button.disabled = false;
+                button.textContent = "Gửi Hồ Sơ";
+            }
         });
+
+
+        // ✅ Hiển thị popup
+        function showSuccessPopup() {
+            const popup = document.getElementById("successPopup");
+            popup.classList.add("active");
+            setTimeout(() => {
+                popup.classList.remove("active");
+            }, 3000);
+        }
         const mobileMenu = document.querySelector('.mobile-menu');
         const navLinks = document.querySelector('.nav-links');
 
