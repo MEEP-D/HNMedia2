@@ -889,11 +889,11 @@
             </div>
             <div class="form-group">
                 <label>Vị Trí Ứng Tuyển</label>
-                <select required>
+                <select name="position"  id="position" required>
                     <option value="">Chọn vị trí</option>
-                    <option value="content">Content Creator</option>
-                    <option value="marketing">Nhân viên Livestream</option>
-                    <option value="sales">Nhân viên Affilate                    </option>
+                    <option value="Content Creator">Content Creator</option>
+                    <option value="Nhân viên Livestream">Nhân viên Livestream</option>
+                    <option value="Nhân viên Affilate">Nhân viên Affilate</option>
                 </select>
             </div>
             <div class="form-group">
@@ -981,7 +981,7 @@
             const name = e.target.querySelector("input[type=text]").value;
             const email = e.target.querySelector("input[type=email]").value;
             const phone = e.target.querySelector("input[type=tel]").value;
-            const position = e.target.querySelector("select").value;
+            const position = e.target.querySelector("select[name=position]").value;
             const message = e.target.querySelector("textarea").value;
             const fileInput = e.target.querySelector("input[type=file]");
             let fileData = null;
